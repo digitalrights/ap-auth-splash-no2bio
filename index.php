@@ -33,6 +33,21 @@
         </div>
         <div class="text-center">
           <form action="/login" method="post">
+            <?php
+              $get_empty = false;
+              $get = array();
+              foreach (array('gw_id', 'gw_address', 'gw_port') as $field) {
+                if (!isset($_GET[$field])) {
+                  $get_empty = true;
+                }
+                $get[$field] = preg_replace('#[^a-z0-9\._-]#i', '', $_GET[$field]);
+              }
+              if (!$get_empty):
+            ?>
+            <input type="hidden" name="gw_id" value="<?php echo $get['gw_id']; ?>">
+            <input type="hidden" name="gw_address" value="<?php echo $get['gw_address']; ?>">
+            <input type="hidden" name="gw_port" value="<?php echo $get['gw_port']; ?>">
+            <?php endif; ?>
             <input type="hidden" id="authenticators" name="authenticator" value="apAuthSplashOnly">
             <input type="submit" class="btn btn-success" name="submit[apAuthSplashOnlyConnect]" value="להמשך גלישה">
           </form>
