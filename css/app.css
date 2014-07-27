@@ -1,0 +1,21 @@
+body {
+    font-size: 13pt;
+}
+
+#main-container {
+    max-width: 500px;
+}
+
+@media (min-width: 768px) {
+    #main-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 767px) {
+    #main-container {
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+}
